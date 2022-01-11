@@ -5,16 +5,15 @@ import cgitb
 cgitb.enable()
 
 form = cgi.FieldStorage()
-listval = form.getlist('operand')
+operands = form.getlist('operand')
 
 
-
+total = 0
 try: 
-    sum = 0
-    for i in listval:
-        sum += int(i)
+    for i in operands:
+        total += int(i)
 
-    body = "The sum is: " + i
+    body = f"Your total is: {total}"
 except (ValueError, TypeError):
     body = "Unable to calculate, please provide valid operands."
 
